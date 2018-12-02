@@ -1,0 +1,28 @@
+version: '3'
+
+networks:
+ prodnetwork:
+    driver: bridge
+
+services:
+ oracle-11g:
+  hostname: oracle
+  build: ./oracle-xe-11g
+  ports:
+    - "11521:1521"
+    - "2222:22"
+    - "18080:8080"
+  networks:
+    - prodnetwork
+
+ postgresql-11:
+  hostname: postgresql
+  build: ./postgresql-11
+  ports:
+    - "15432:5432"
+  networks:
+    - prodnetwork
+  environment:
+    -
+
+
