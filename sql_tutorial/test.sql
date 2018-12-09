@@ -47,7 +47,10 @@ ON p.PlaylistId = pt.PlaylistId
 GROUP BY p.name;
 
 
-SELECT p.Name, COUNT(pt.TrackId) as "Number Of Tracks"
+EXPLAIN PLAN FOR SELECT p.Name, COUNT(pt.TrackId) as "Number Of Tracks"
 FROM Playlist p JOIN PlaylistTrack pt
 using (PlaylistId)
 GROUP BY p.name;
+
+select * from table (dbms_xplan.display);
+select count(*) from PLAYLISTTRACK;
