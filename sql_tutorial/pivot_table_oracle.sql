@@ -27,6 +27,3 @@ SELECT customer_id,
 FROM   pivot_test
 GROUP BY customer_id
 ORDER BY customer_id;
-
-
-

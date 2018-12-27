@@ -5,3 +5,11 @@ FROM ( SELECT ar.Name as 'Artist Name', SUM(t.UnitPrice) as 'Total earned'
   GROUP BY ar.Name
 )
 ORDER BY 'Total Earned' DESC;
+
+
+SELECT e.FirstName, e.LastName, SUM(i.Total) FROM Invoice i
+JOIN Customer c ON c.CustomerId = i.CustomerId
+JOIN Employee e ON c.SupportRepId = e.EmployeeId
+GROUP BY e.FIRSTNAME, e.LASTNAME;
+
+
