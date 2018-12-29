@@ -13,3 +13,8 @@ JOIN Employee e ON c.SupportRepId = e.EmployeeId
 GROUP BY e.FIRSTNAME, e.LASTNAME;
 
 
+select e.employeeid, count(i.invoiceid)
+from employee  e
+	join customer c on e.employeeid = c.supportrepid
+	join invoice i on i.customerid = c.customerid
+group by e.employeeid;

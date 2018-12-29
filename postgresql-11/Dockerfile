@@ -1,4 +1,3 @@
-# vim:set ft=dockerfile:
 FROM debian:stretch-slim
 
 RUN set -ex; \
