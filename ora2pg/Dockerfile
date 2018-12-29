@@ -20,7 +20,7 @@ RUN yum -y install oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm && \
 
 ENV ORACLE_HOME /usr/lib/oracle/11.2/client64
 ENV PATH=${PATH}:/usr/lib/oracle/11.2/client64/bin
-ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}/usr/lib/oracle/11.2/client64/lib
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/oracle/11.2/client64/lib
 
 
 RUN wget https://cpan.metacpan.org/authors/id/T/TI/TIMB/DBI-1.642.tar.gz && \
@@ -37,12 +37,13 @@ RUN chmod +x /ora_connect.pl
 
 RUN wget https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm && \
     yum -y install pgdg-centos11-11-2.noarch.rpm && \
-    yum -y install postgresql11
+    yum -y install postgresql11 && \
+    yum -y install postgresql11-devel
 
 
 ENV POSTGRESQL_HOME /usr/pgsql-11
 ENV PATH=${PATH}:/usr/pgsql-11/bin
-ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}/usr/pgsql-11/lib
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/pgsql-11/lib
 
 RUN wget https://cpan.metacpan.org/authors/id/T/TU/TURNSTEP/DBD-Pg-3.7.4.tar.gz && \
     tar -zxvf DBD-Pg-3.7.4.tar.gz && \
