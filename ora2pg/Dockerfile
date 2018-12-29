@@ -1,10 +1,55 @@
 FROM centos:7
 
+#ENV ORACLE_HOME=/usr/lib/oracle/12.1/client64
+#ENV PATH=/usr/lib/oracle/12.1/client64/bin
+#ENV LD_LIBRARY_PATH=/usr/lib/oracle/12.1/client64/lib
+
+
 RUN yum -y update && \
-    yum  -y install git htop iotop iftop && \
+    yum  -y install wget git htop iotop iftop && \
     yum -y install cpanm gcc perl perl-App-cpanminus perl-Config-Tiny && \
-    yum clean all && \
-    cpanm install DBD::Oracle; rm -fr root/.cpanm; exit 0 && \
-    cpanm install DBD::Pg; rm -fr root/.cpanm; exit 0  && \
-    cpanm install Time::Res; rm -fr root/.cpanm; exit
+    yum clean all
+
+COPY oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm /
+COPY oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm /
+COPY oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm /
+
+RUN yum -y install oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm && \
+    yum -y install oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm && \
+    yum -y install oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm
+
+ENV ORACLE_HOME /usr/lib/oracle/11.2/client64
+ENV PATH=${PATH}:/usr/lib/oracle/11.2/client64/bin
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}/usr/lib/oracle/11.2/client64/lib
+
+
+RUN wget https://cpan.metacpan.org/authors/id/T/TI/TIMB/DBI-1.642.tar.gz && \
+    tar -zxvf DBI-1.642.tar.gz && cd DBI-1.642 && perl Makefile.PL  && make && make install
+
+RUN wget https://cpan.metacpan.org/authors/id/Z/ZA/ZARQUON/DBD-Oracle-1.76.tar.gz && \
+    tar -zxvf DBD-Oracle-1.76.tar.gz && \
+    cd DBD-Oracle-1.76  && \
+    perl Makefile.PL  && \
+    make && make install
+
+COPY ora_connect.pl /
+RUN chmod +x /ora_connect.pl
+
+RUN wget https://download.postgresql.org/pub/repos/yum/11/redhat/rhel-7-x86_64/pgdg-centos11-11-2.noarch.rpm && \
+    yum -y install pgdg-centos11-11-2.noarch.rpm && \
+    yum -y install postgresql11
+
+
+ENV POSTGRESQL_HOME /usr/pgsql-11
+ENV PATH=${PATH}:/usr/pgsql-11/bin
+ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}/usr/pgsql-11/lib
+
+RUN wget https://cpan.metacpan.org/authors/id/T/TU/TURNSTEP/DBD-Pg-3.7.4.tar.gz && \
+    tar -zxvf DBD-Pg-3.7.4.tar.gz && \
+    cd DBD-Pg-3.7.4 && \
+    perl Makefile.PL && \
+    make && make install
+
+COPY pg_connect.pl /
+RUN chmod +x /pg_connect.pl
 

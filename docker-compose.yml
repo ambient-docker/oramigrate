@@ -10,6 +10,19 @@ volumes:
 
 
 services:
+ ora2pg:
+   hostname: ora2pg
+   build: ./ora2pg
+   command: tail -f /dev/null
+   links:
+     - postgresql-11:pg
+     - oracle-11g:ora
+   depends_on:
+     - postgresql-11
+     - oracle-11g
+   networks:
+     - prodnetwork
+
  oracle-11g:
   hostname: oracle
   image: ambientdocker/docker-oracle-xe-11g 
