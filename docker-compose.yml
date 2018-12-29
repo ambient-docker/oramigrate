@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 networks:
  prodnetwork:
@@ -27,5 +27,23 @@ services:
   build: ./postgresql-11
   ports:
     - "15432:5432"
+  environment:
+    - POSTGRES_PASSWORD=password
+  networks:
+    - prodnetwork
+
+
+ phppgadmin:
+  hostname: phppgadmin
+  build: ./phpPgAdmin
+  links:
+    - postgresql-11:pg
+  depends_on:
+    - postgresql-11
+  ports:
+    - "29000:80"
+  environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=password
   networks:
     - prodnetwork

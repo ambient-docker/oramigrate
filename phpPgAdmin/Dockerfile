@@ -10,9 +10,12 @@ RUN yum -y update && \
     yum clean all
     
 COPY phpPgAdmin.conf /etc/httpd/conf.d/phpPgAdmin.conf
+COPY config.inc.php /etc/phpPgAdmin/config.inc.php
 
 # Simple startup script to avoid some issues observed with container restart
 ADD run-httpd.sh /run-httpd.sh
 RUN chmod -v +x /run-httpd.sh
+
+EXPOSE 5432
 
 CMD ["/run-httpd.sh"]
