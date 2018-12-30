@@ -11,7 +11,7 @@ my $user = 'system';
 my$pass = 'oracle';
 
 my $dbh = DBI->connect("dbi:Oracle://$machine:$port/$sid", $user, $pass) ||  die "Failed to connect: $DBI::errstr\n";
-my $sql = << 'END_SQL';
+my $sql = << "END_SQL";
 
 /*******************************************************************************
    Chinook Database - Version 1.4
@@ -15834,8 +15834,6 @@ INSERT INTO PlaylistTrack (PlaylistId, TrackId) VALUES (17, 2096);
 INSERT INTO PlaylistTrack (PlaylistId, TrackId) VALUES (17, 3290);
 INSERT INTO PlaylistTrack (PlaylistId, TrackId) VALUES (18, 597);
 
-commit;
-exit;
 END_SQL
 $dbh->do($sql);
 $dbh->disconnect;
