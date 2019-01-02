@@ -25,10 +25,10 @@ services:
 
  oracle-11g:
   hostname: oracle
-  image: ambientdocker/docker-oracle-xe-11g 
+  build: ./oracle-xe-11g
   ports:
     - "11521:1521"
-    - "2222:22"
+    - "2222:2:2"
     - "18090:8080"
   networks:
     - prodnetwork

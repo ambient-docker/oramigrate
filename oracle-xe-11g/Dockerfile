@@ -1,12 +1,7 @@
-FROM ubuntu:18.04
+FROM ambientdocker/docker-oracle-xe-11g
 
-MAINTAINER Wei-Ming Wu <wnameless@gmail.com>
+MAINTAINER Herve  <dockerlite@gmail.com>
 
-ADD assets /assets
-RUN /assets/setup.sh
+COPY Chinook_Oracle.sql /
 
-EXPOSE 22
-EXPOSE 1521
-EXPOSE 8080
 
-CMD /usr/sbin/startup.sh && tail -f /dev/null
