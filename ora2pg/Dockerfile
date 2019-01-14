@@ -51,12 +51,15 @@ RUN wget https://cpan.metacpan.org/authors/id/T/TU/TURNSTEP/DBD-Pg-3.7.4.tar.gz 
     perl Makefile.PL && \
     make && make install
 
-COPY pg_connect.pl /
-RUN chmod +x /pg_connect.pl
-
 # install ora2pg
 RUN wget https://github.com/darold/ora2pg/archive/v19.1.tar.gz && \
     tar -zxvf v19.1.tar.gz && \
     cd ora2pg-19.1 && \
     perl Makefile.PL && \
     make && make install
+
+COPY pg_connect.pl /
+RUN chmod +x /pg_connect.pl
+COPY ora2pg.conf /etc/ora2pg/
+COPY chinook_convert.sql /ora2pg-19.1/scripts
+
