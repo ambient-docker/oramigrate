@@ -1,4 +1,4 @@
-CREATE or REPLACE FUNCTION test(msg varchar(20))
+CREATE or REPLACE FUNCTION regexp_instr(msg varchar(20))
 RETURNS varchar AS
 $$
 DECLARE
