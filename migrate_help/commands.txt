@@ -1,0 +1,1 @@
+sqlplus 'system/oracle@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(Host=localhost)(Port=11521))(CONNECT_DATA=(SID=XE)))'
