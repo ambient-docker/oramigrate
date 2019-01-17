@@ -1,5 +1,5 @@
 SQL> create table t
-  2  as
+  d  as
   3  select username, created
   4  from all_users
   5  /
