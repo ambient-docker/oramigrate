@@ -10,9 +10,11 @@ RUN yum -y update && \
     yum -y install cpanm gcc perl perl-App-cpanminus perl-Config-Tiny && \
     yum clean all
 
-COPY oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm /
-COPY oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm /
-COPY oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm /
+WORKDIR /client_oracle
+
+COPY oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm /client_oracle
+COPY oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm /client_oracle
+COPY oracle-instantclient11.2-devel-11.2.0.4.0-1.x86_64.rpm /client_oracle
 
 RUN yum -y install oracle-instantclient11.2-basic-11.2.0.4.0-1.x86_64.rpm && \
     yum -y install oracle-instantclient11.2-sqlplus-11.2.0.4.0-1.x86_64.rpm && \
@@ -22,6 +24,7 @@ ENV ORACLE_HOME /usr/lib/oracle/11.2/client64
 ENV PATH=${PATH}:/usr/lib/oracle/11.2/client64/bin
 ENV LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/oracle/11.2/client64/lib
 
+WORKDIR /
 
 RUN wget https://cpan.metacpan.org/authors/id/T/TI/TIMB/DBI-1.642.tar.gz && \
     tar -zxvf DBI-1.642.tar.gz && cd DBI-1.642 && perl Makefile.PL  && make && make install
