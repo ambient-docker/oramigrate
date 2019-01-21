@@ -14,9 +14,9 @@ COPY fury.repo /etc/yum.repos.d
 
 RUN yum --disablerepo=* --enablerepo=fury list available
 
-RUN yum -y install oracle-instantclient11.2-basic.x86_64.rpm && \
-    yum -y install oracle-instantclient11.2-sqlplus.x86_64.rpm && \
-    yum -y install oracle-instantclient11.2-devel.x86_64.rpm
+RUN yum -y install oracle-instantclient11.2-basic.rpm && \
+    yum -y install oracle-instantclient11.2-sqlplus.rpm && \
+    yum -y install oracle-instantclient11.2-devel.rpm
 
 ENV ORACLE_HOME /usr/lib/oracle/11.2/client64
 ENV PATH=${PATH}:/usr/lib/oracle/11.2/client64/bin
