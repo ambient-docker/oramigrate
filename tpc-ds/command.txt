@@ -1,0 +1,1 @@
+./dsdgen -scale 1 -dir /tmp/dsd -parallel 2 -child 1
