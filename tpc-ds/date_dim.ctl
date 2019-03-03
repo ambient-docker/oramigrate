@@ -6,7 +6,7 @@ INSERT INTO TABLE date_dim
 FIELDS TERMINATED BY "|" OPTIONALLY ENCLOSED BY '"' TRAILING NULLCOLS
 ( D_DATE_SK              ,
   D_DATE_ID              ,
-  D_DATE    date  ''yyyy-mm-dd' ,
+  D_DATE    date  'yyyy-mm-dd' ,
   D_MONTH_SEQ         ,
   D_WEEK_SEQ          ,
   D_QUARTER_SEQ       ,
