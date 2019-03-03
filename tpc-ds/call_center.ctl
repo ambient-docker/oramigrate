@@ -1,9 +1,9 @@
 LOAD DATA
-INFILE ‘/tmp/dsd/call_center_1_2.dat'
-BADFILE ‘/tmp/dsd/call_center_1_2.bad’
-DISCARDFILE ‘/tmp/dsd/dbgen_center_1_2.dsc’
+INFILE '/tmp/dsd/call_center_1_2.dat'
+BADFILE '/tmp/dsd/call_center_1_2.bad'
+DISCARDFILE '/tmp/dsd/call_center_1_2.dsc'
 INSERT INTO TABLE call_center
-FIELDS TERMINATED BY “|” OPTIONALLY ENCLOSED BY ‘”‘ TRAILING
+FIELDS TERMINATED BY "|" OPTIONALLY ENCLOSED BY '"' TRAILING
 NULLCOLS
 ( CC_CALL_CENTER_SK ,
   CC_CALL_CENTER_ID ,
