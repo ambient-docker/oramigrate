@@ -47,7 +47,7 @@ alter table catalog_returns add constraint cr_cd1 foreign key  (cr_refunded_cdem
 alter table catalog_returns add constraint cr_c1 foreign key  (cr_refunded_customer_sk) references customer (c_customer_sk);
 alter table catalog_returns add constraint cr_hd1 foreign key  (cr_refunded_hdemo_sk) references household_demographics (hd_demo_sk);
 alter table catalog_returns add constraint cr_d1 foreign key  (cr_returned_date_sk) references date_dim (d_date_sk);
-alter table catalog_returns add constraint cr_i foreign key  (cr_returned_time_sk) references time_dim (t_time_sk);
+alter table catalog_returns add constraint cr_time foreign key  (cr_returned_time_sk) references time_dim (t_time_sk);
 alter table catalog_returns add constraint cr_a2 foreign key  (cr_returning_addr_sk) references customer_address (ca_address_sk);
 alter table catalog_returns add constraint cr_cd2 foreign key  (cr_returning_cdemo_sk) references customer_demographics (cd_demo_sk);
 alter table catalog_returns add constraint cr_c2 foreign key  (cr_returning_customer_sk) references customer (c_customer_sk);
