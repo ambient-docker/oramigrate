@@ -52,7 +52,7 @@ alter table catalog_returns add constraint cr_a2 foreign key  (cr_returning_addr
 alter table catalog_returns add constraint cr_cd2 foreign key  (cr_returning_cdemo_sk) references customer_demographics (cd_demo_sk);
 alter table catalog_returns add constraint cr_c2 foreign key  (cr_returning_customer_sk) references customer (c_customer_sk);
 alter table catalog_returns add constraint cr_hd2 foreign key  (cr_returning_hdemo_sk) references household_demographics (hd_demo_sk);
-alter table catalog_returns add constraint cr_d2 foreign key  (cr_ship_date_sk) references date_dim (d_date_sk);
+--alter table catalog_returns add constraint cr_d2 foreign key  (cr_ship_date_sk) references date_dim (d_date_sk);
 alter table catalog_returns add constraint cr_sm foreign key  (cr_ship_mode_sk) references ship_mode (sm_ship_mode_sk);
 alter table catalog_returns add constraint cr_w2 foreign key  (cr_warehouse_sk) references warehouse (w_warehouse_sk);
 alter table catalog_sales add constraint cs_b_a foreign key  (cs_bill_addr_sk) references customer_address (ca_address_sk);
