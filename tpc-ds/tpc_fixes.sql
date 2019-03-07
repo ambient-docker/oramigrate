@@ -24,11 +24,6 @@ SET CS_BILL_CDEMO_SK=(select CD_DEMO_SK from (select CD_DEMO_SK from  CUSTOMER_D
 where rownum  between 1 and 1441548;
 commit;
 
-UPDATE CATALOG_SALES
-SET CS_BILL_CDEMO_SK=(select CD_DEMO_SK from (select CD_DEMO_SK from  CUSTOMER_DEMOGRAPHICS order by   DBMS_RANDOM.value)
-   where rownum=1)
-where rownum  between 1 and 1441548;
-commit;
 
 
 UPDATE CATALOG_SALES
