@@ -37,7 +37,7 @@ while ( my ($key) = $sth->fetchrow())
 {
     $random = 1 + int rand($total_keys);
     $value =  $list_of_keys[$random];
-    my $update= $dbh->prepare('UPDATE catalog_returns SET cr_refunded_cdemo_sk=:value where cr_refunded_cdemo=:key and cr_refunded_cdemo_sk is not null');
+    my $update= $dbh->prepare('UPDATE catalog_returns SET cr_refunded_cdemo_sk=:value where cr_refunded_cdemo_sk=:key and cr_refunded_cdemo_sk is not null');
     $update->bind_param(":key",$key);
     $update->bind_param(":value",$value);
     $update->execute();
