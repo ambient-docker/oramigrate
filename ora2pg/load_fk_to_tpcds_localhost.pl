@@ -54,7 +54,7 @@ while ( my ($key) = $sth->fetchrow())
     $random = 1 + int rand($total_keys);
     $value=  $list_of_keys[$random];
     my $update= $dbh->prepare('UPDATE catalog_sales SET cs_bill_cdemo_sk=:value where cs_bill_cdemo_sk=:key and cs_bill_cdemo_sk is not null ');
-    $update->bind_param(":key",$values);
+    $update->bind_param(":key",$key);
     $update->bind_param(":value",$value);
     $update->execute();
     print $value .  "\t" .  $count ."\n";
