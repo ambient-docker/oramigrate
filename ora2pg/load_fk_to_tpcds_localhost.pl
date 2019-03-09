@@ -4,8 +4,8 @@ use strict;
 use DBI;
 use DBD::Oracle;
 
-my $machine = 'oracle-11g';
-my $port    = 1521;
+my $machine = 'localhost';
+my $port    = 11521;
 my $sid     = 'xe';
 my $user = 'tpcds';
 my$pass = 'p4ssw0rd';
@@ -41,7 +41,7 @@ while ( my ($key) = $sth->fetchrow())
     $update->bind_param(":key",$key);
     $update->bind_param(":value",$value);
     $update->execute();
-    print $count;
+    print $value .  "\t" .  $count ."\n";
     $count +=1;
 }
 #=======================  CS_BILL_CDEMO_SK ==============================================
@@ -57,7 +57,7 @@ while ( my ($key) = $sth->fetchrow())
     $update->bind_param(":key",$values);
     $update->bind_param(":value",$value);
     $update->execute();
-    #print $count;
+    print $value .  "\t" .  $count ."\n";
     $count +=1;
 }
 
@@ -79,4 +79,3 @@ while ( my ($key) = $sth->fetchrow())
     print $value .  "\t" .  $count ."\n";
     $count +=1;
 }
-
