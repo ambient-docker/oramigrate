@@ -27,3 +27,22 @@ SELECT customer_id,
 FROM   pivot_test
 GROUP BY customer_id
 ORDER BY customer_id;
+
+
+
+*.audit_file_dest='/u01/app/oracle/admin/dev12c/adump'
+*.audit_trail='db'
+*.compatible='12.0.0.0.0'
+*.control_files='/u01/app/oracle/oradata/dev12c/control01.ctl',
+         '/u02/app/oracle/oradata/dev12c/control02.ctl',
+         '/u03/app/oracle/oradata/dev12c/control03.ctl'
+*.db_block_size=8192
+*.db_domain=’lfg.com’
+*.db_name='dev12c'
+*.db_recovery_file_dest='/u01/app/oracle/fast_recovery_area'
+*.db_recovery_file_dest_size=4815m
+*.diagnostic_dest='/u01/app/oracle'
+*.memory_target=1280m
+*.open_cursors=300
+*.processes=300
+*.undo_tablespace='UNDOTBS1'
