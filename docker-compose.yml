@@ -33,6 +33,7 @@ services:
   volumes:
     - oracle_data:/u01
 
+
  postgresql:
   hostname: postgresql
   build: ./postgresql-11
