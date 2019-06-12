@@ -33,3 +33,12 @@ services:
   volumes:
     - oracle_data:/u01
 
+ postgresql:
+  hostname: postgresql
+  build: ./postgresql-11
+  ports:
+    - "15432:5432"
+  networks:
+    - prodnetwork
+  volumes:
+    - /opt/postgres/data:/var/lib/postgresql/data
